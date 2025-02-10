@@ -233,5 +233,6 @@ if __name__ == '__main__':
     # 初始化資料庫
     with app.app_context():
         db.create_all()
-    app.run()
+    port = int(os.getenv('PORT', 10000))
+    app.run(host='0.0.0.0', port=port)
     
