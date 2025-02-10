@@ -5,11 +5,16 @@ from db import db, UserInfo, Statistics, DataRecords, add_user, get_user, delete
 from flask_cors import CORS
 import pandas as pd
 import io
+from dotenv import load_dotenv
+import os
+
+# 載入 .env 檔案中的環境變數
+load_dotenv()
 
 app = Flask(__name__)
 CORS(app)
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:ybjdb@127.0.0.1:3307/smsp_db'
+app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URL')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db.init_app(app)
 
