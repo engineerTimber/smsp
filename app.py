@@ -20,6 +20,10 @@ db.init_app(app)
 
 
 # 路由
+@app.route('/api/wakeup', methods=['GET'])
+def wakeup():
+    return jsonify({'message': 'Server is awake!'})
+
 @app.route('/api/auth', methods=['POST'])
 def auth():
     data = request.get_json()  # 獲取前端傳來的 JSON 資料
